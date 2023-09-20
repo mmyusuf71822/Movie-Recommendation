@@ -32,7 +32,7 @@ with image:
 if st.button('Recommend Me Movies'):
     st.subheader('Movies you\'ll likes :heart:')
     idx = st.session_state['data'][st.session_state['data']['Series_Title'] == movies].index[0]
-    content = st.session_state['data'].loc[idx, 'metadata-prep-lemm']
+    content = st.session_state['data'].loc[idx, 'text-prep-lemm']
     watched = st.session_state['model'].transform([content])
     dist = cosine_distances(watched, st.session_state['matrix'])
     rec_idx = dist.argsort()[0, 1:11]
